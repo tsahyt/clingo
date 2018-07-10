@@ -1226,6 +1226,12 @@ extern "C" bool clingo_control_register_propagator(clingo_control_t *ctl, clingo
     GRINGO_CLINGO_CATCH;
 }
 
+extern "C" bool clingo_control_set_heuristic(clingo_control_t *ctl)
+{
+    GRINGO_CLINGO_TRY { }
+    GRINGO_CLINGO_CATCH;
+}
+
 extern "C" bool clingo_control_cleanup(clingo_control_t *ctl) {
     GRINGO_CLINGO_TRY { ctl->cleanupDomains(); }
     GRINGO_CLINGO_CATCH;

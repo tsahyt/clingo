@@ -3158,6 +3158,9 @@ CLINGO_VISIBILITY_DEFAULT bool clingo_control_release_external(clingo_control_t 
 //! @return whether the call was successful; might set one of the following error codes:
 //! - ::clingo_error_bad_alloc
 CLINGO_VISIBILITY_DEFAULT bool clingo_control_register_propagator(clingo_control_t *control, clingo_propagator_t const *propagator, void *data, bool sequential);
+
+CLINGO_VISIBILITY_DEFAULT bool clingo_control_set_heuristic(clingo_control_t *ctl);
+
 //! Get a statistics object to inspect solver statistics.
 //!
 //! Statistics are updated after a solve call.

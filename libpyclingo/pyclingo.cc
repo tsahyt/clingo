@@ -5757,6 +5757,12 @@ active; you must not call any member function during search.)";
         handle_c_error(clingo_control_register_propagator(ctl, &propagator, tp.toPy(), false));
         Py_RETURN_NONE;
     }
+    Object setHeuristic(Reference tp)
+    {
+        CHECK_BLOCKED("set_heuristic");
+        handle_c_error(clingo_control_set_heuristic(ctl));
+        Py_RETURN_NONE;
+    }
     Object registerObserver(Reference args, Reference kwds) {
         CHECK_BLOCKED("register_observer");
         static char const *kwlist[] = {"observer", "replace", nullptr};
