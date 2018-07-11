@@ -1236,8 +1236,6 @@ public:
         }
     }
 
-    virtual ~ClingoExtHeuristic ();
-
 private:
     clingo_ext_heuristic_t heu_;
     void *data_;
