@@ -1219,7 +1219,7 @@ private:
     void *data_;
 };
 
-class ClingoExtHeuristic
+class ClingoExtHeuristic : Clasp::ClingoExtHeuristic
 {
 public:
     ClingoExtHeuristic (clingo_ext_heuristic_t heu, void *data)
