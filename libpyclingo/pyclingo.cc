@@ -5760,7 +5760,7 @@ active; you must not call any member function during search.)";
     Object setHeuristic(Reference tp)
     {
         CHECK_BLOCKED("set_heuristic");
-        handle_c_error(clingo_control_set_heuristic(ctl, NULL));
+        handle_c_error(clingo_control_set_heuristic(ctl, NULL, tp.toPy()));
         Py_RETURN_NONE;
     }
     Object registerObserver(Reference args, Reference kwds) {

@@ -1219,6 +1219,28 @@ private:
     void *data_;
 };
 
+class ClingoExtHeuristic
+{
+public:
+    ClingoExtHeuristic (clingo_ext_heuristic_t heu, void *data)
+    : heu_(heu)
+    , data_(data) { }
+
+    int32_t decide() {
+        if(heu_.decide) {
+            return heu_.decide(NULL, data_);
+        } else {
+            throw ClingoError();
+        }
+    }
+
+    virtual ~ClingoExtHeuristic ();
+
+private:
+    clingo_ext_heuristic_t heu_;
+    void *data_;
+};
+
 } // namespace
 
 extern "C" bool clingo_control_register_propagator(clingo_control_t *ctl, clingo_propagator_t const *propagator, void *data, bool sequential) {
@@ -1226,9 +1248,9 @@ extern "C" bool clingo_control_register_propagator(clingo_control_t *ctl, clingo
     GRINGO_CLINGO_CATCH;
 }
 
-extern "C" bool clingo_control_set_heuristic(clingo_control_t *ctl, clingo_ext_heuristic_t *heu)
+extern "C" bool clingo_control_set_heuristic(clingo_control_t *ctl, clingo_ext_heuristic_t *heu, void *data)
 {
-    GRINGO_CLINGO_TRY { ctl->setHeuristic(); }
+    GRINGO_CLINGO_TRY { ctl->setHeuristic((void*)heu); }
     GRINGO_CLINGO_CATCH;
 }
 

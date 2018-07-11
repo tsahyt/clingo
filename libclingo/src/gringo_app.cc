@@ -217,7 +217,7 @@ struct IncrementalControl : Control {
     SymbolicAtoms &getDomain() override { throw std::runtime_error("domain introspection not supported"); }
     ConfigProxy &getConf() override { throw std::runtime_error("configuration not supported"); }
     void registerPropagator(UProp, bool) override { throw std::runtime_error("theory propagators not supported"); }
-    void setHeuristic() override { throw std::runtime_error("external heuristics not supported"); }
+    void setHeuristic(void*) override { throw std::runtime_error("external heuristics not supported"); }
     void useEnumAssumption(bool) override { }
     bool useEnumAssumption() override { return false; }
     virtual ~IncrementalControl() { }
