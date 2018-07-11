@@ -400,7 +400,7 @@ void ClingoControl::registerPropagator(std::unique_ptr<Propagator> p, bool seque
     props_.emplace_back(std::move(p));
 }
 
-void ClingoControl::setHeuristic(void* e) {
+void ClingoControl::setHeuristic(Clasp::ClingoExtHeuristic* e) {
     std::cout << "setHeuristic called in control" << std::endl;
     claspConfig_.setExternalHeuristic();
 }

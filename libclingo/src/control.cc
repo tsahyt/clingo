@@ -1219,7 +1219,9 @@ private:
     void *data_;
 };
 
-class ClingoExtHeuristic : Clasp::ClingoExtHeuristic
+} // namespace
+
+class ClingoExtHeuristic : public Clasp::ClingoExtHeuristic
 {
 public:
     ClingoExtHeuristic (clingo_ext_heuristic_t heu, void *data)
@@ -1241,8 +1243,6 @@ private:
     void *data_;
 };
 
-} // namespace
-
 extern "C" bool clingo_control_register_propagator(clingo_control_t *ctl, clingo_propagator_t const *propagator, void *data, bool sequential) {
     GRINGO_CLINGO_TRY { ctl->registerPropagator(gringo_make_unique<ClingoPropagator>(*propagator, data), sequential); }
     GRINGO_CLINGO_CATCH;
@@ -1250,7 +1250,10 @@ extern "C" bool clingo_control_register_propagator(clingo_control_t *ctl, clingo
 
 extern "C" bool clingo_control_set_heuristic(clingo_control_t *ctl, clingo_ext_heuristic_t *heu, void *data)
 {
-    GRINGO_CLINGO_TRY { ctl->setHeuristic((void*)heu); }
+    GRINGO_CLINGO_TRY { 
+        ClingoExtHeuristic* h = new ClingoExtHeuristic(*heu, data);
+        ctl->setHeuristic(h);
+    }
     GRINGO_CLINGO_CATCH;
 }
 
