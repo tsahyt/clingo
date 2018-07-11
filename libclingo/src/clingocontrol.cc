@@ -398,6 +398,10 @@ void ClingoControl::registerPropagator(std::unique_ptr<Propagator> p, bool seque
     props_.emplace_back(std::move(p));
 }
 
+void ClingoControl::setHeuristic() {
+
+}
+
 void ClingoControl::cleanupDomains() {
     out_->endStep(false, logger_);
     if (clingoMode_) {

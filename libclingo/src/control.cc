@@ -1228,7 +1228,7 @@ extern "C" bool clingo_control_register_propagator(clingo_control_t *ctl, clingo
 
 extern "C" bool clingo_control_set_heuristic(clingo_control_t *ctl)
 {
-    GRINGO_CLINGO_TRY { }
+    GRINGO_CLINGO_TRY { ctl->setHeuristic(); }
     GRINGO_CLINGO_CATCH;
 }
 
