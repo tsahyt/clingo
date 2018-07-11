@@ -6317,6 +6317,8 @@ This function is thread-safe and can be called from a signal handler.  If no
 search is active the subsequent call to solve() is interrupted.  The
 SolveResult of the above solving methods can be used to query if the search was
 interrupted.)"},
+    {"set_heuristic", to_function<&ControlWrap::setHeuristic>(), METH_VARARGS,
+R"("set_heuristic(self) -> None")"},
     {nullptr, nullptr, 0, nullptr}
 };
 
