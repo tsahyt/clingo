@@ -32,6 +32,8 @@
 #include <clingo/script.h>
 #include <clingo/incmode.hh>
 
+#include <iostream>
+
 namespace Gringo {
 
 // {{{1 definition of ClaspAPIBackend
@@ -399,7 +401,8 @@ void ClingoControl::registerPropagator(std::unique_ptr<Propagator> p, bool seque
 }
 
 void ClingoControl::setHeuristic() {
-
+    std::cout << "setHeuristic called in control" << std::endl;
+    claspConfig_.setExternalHeuristic();
 }
 
 void ClingoControl::cleanupDomains() {
