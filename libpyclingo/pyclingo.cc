@@ -3072,12 +3072,12 @@ PyGetSetDef PropagateControl::tp_getset[] = {
 };
 
 // {{{1 wrap Heuristic
-static clingo_literal_t heuristic_decide(clingo_heuristic_control_t *ctl, PyObject *heu) {
+static clingo_literal_t heuristic_decide(clingo_literal_t vsids, PyObject *heu) {
     PyBlock block;
     try {
-        // Object c = HeuristicControl::construct(ctl)
+        Object l = PyLong_FromLong(vsids);
         Object n = PyString_FromString("decide");
-        Object ret = PyObject_CallMethodObjArgs(heu, n.toPy(), nullptr);
+        Object ret = PyObject_CallMethodObjArgs(heu, n.toPy(), l.toPy(), nullptr);
         long retL = PyLong_AsLong(ret.toPy());
         return retL;
     }

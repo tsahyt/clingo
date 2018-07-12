@@ -1228,9 +1228,9 @@ public:
     : heu_(heu)
     , data_(data) { }
 
-    int32_t decide() {
+    int32_t decide(int32_t vsids) {
         if(heu_.decide) {
-            return heu_.decide(NULL, data_);
+            return heu_.decide(vsids, data_);
         } else {
             throw ClingoError();
         }

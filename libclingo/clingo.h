@@ -1579,7 +1579,7 @@ typedef struct clingo_propagator {
 typedef struct clingo_heuristic_control clingo_heuristic_control_t;
 
 typedef struct clingo_ext_heuristic {
-    clingo_literal_t (*decide) (clingo_heuristic_control_t *control, void *data);
+    clingo_literal_t (*decide) (clingo_literal_t vsids, void *data);
 } clingo_ext_heuristic_t;
 
 //! @}

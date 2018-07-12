@@ -6,9 +6,9 @@ class Heuristic:
     def __init__(self):
         print(self)
 
-    def decide(self):
-        print("decide called")
-        return 10
+    def decide(self,vsids):
+        print("decide called with {}".format(vsids))
+        return vsids
 
     def init(self, init):
         print("init called")
