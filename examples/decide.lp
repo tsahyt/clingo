@@ -8,7 +8,7 @@ class Heuristic:
 
     def decide(self):
         print("decide called")
-        return True
+        return 10
 
 def main(prg):
     prg.set_heuristic(Heuristic())

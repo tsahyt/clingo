@@ -3078,11 +3078,12 @@ static clingo_literal_t heuristic_decide(clingo_heuristic_control_t *ctl, PyObje
         // Object c = HeuristicControl::construct(ctl)
         Object n = PyString_FromString("decide");
         Object ret = PyObject_CallMethodObjArgs(heu, n.toPy(), nullptr);
-        return 1;
+        long retL = PyLong_AsLong(ret.toPy());
+        return retL;
     }
     catch (...) {
         handle_cxx_error("Heuristic::decide", "error during decision");
-        return 2;
+        return 0;
     }
 }
 
