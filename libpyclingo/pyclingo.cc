@@ -5780,6 +5780,7 @@ active; you must not call any member function during search.)";
             reinterpret_cast<decltype(clingo_ext_heuristic_t::decide)>(heuristic_decide)
         };
         handle_c_error(clingo_control_set_heuristic(ctl, &heuristic, tp.toPy()));
+        registerPropagator(tp);
         Py_RETURN_NONE;
     }
     Object registerObserver(Reference args, Reference kwds) {
