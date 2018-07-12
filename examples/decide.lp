@@ -8,7 +8,7 @@ class Heuristic:
 
     def decide(self,vsids):
         print("decide called with {}".format(vsids))
-        return vsids
+        return -vsids
 
     def init(self, init):
         print("init called")
