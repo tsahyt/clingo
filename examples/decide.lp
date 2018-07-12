@@ -10,6 +10,20 @@ class Heuristic:
         print("decide called")
         return 10
 
+    def init(self, init):
+        print("init called")
+        for a in init.symbolic_atoms:
+            print((a.symbol, init.solver_literal(a.literal)))
+            init.add_watch(init.solver_literal(a.literal))
+        pass
+
+    def propagate(self, ctl, changes):
+        print(changes)
+
+    def undo(self, thread_id, assign, changes):
+        print("undo")
+        print(changes)
+
 def main(prg):
     prg.set_heuristic(Heuristic())
     prg.ground([("base", [])])
