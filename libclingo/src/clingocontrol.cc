@@ -402,7 +402,7 @@ void ClingoControl::registerPropagator(std::unique_ptr<Propagator> p, bool seque
 
 void ClingoControl::setHeuristic(Clasp::ClingoExtHeuristic* e) {
     std::cout << "setHeuristic called in control" << std::endl;
-    claspConfig_.setExternalHeuristic();
+    claspConfig_.setExternalHeuristic(e);
 }
 
 void ClingoControl::cleanupDomains() {
