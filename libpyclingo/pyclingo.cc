@@ -3071,6 +3071,21 @@ PyGetSetDef PropagateControl::tp_getset[] = {
     {nullptr, nullptr, nullptr, nullptr, nullptr}
 };
 
+// {{{1 wrap Heuristic
+static clingo_literal_t heuristic_decide(clingo_heuristic_control_t *ctl, PyObject *heu) {
+    PyBlock block;
+    try {
+        // Object c = HeuristicControl::construct(ctl)
+        Object n = PyString_FromString("decide");
+        Object ret = PyObject_CallMethodObjArgs(heu, n.toPy(), nullptr);
+        return 0;
+    }
+    catch (...) {
+        handle_cxx_error("Heuristic::decide", "error during decision");
+        return 0;
+    }
+}
+
 // {{{1 wrap Propagator
 
 static bool propagator_init(clingo_propagate_init_t *init, PyObject *prop) {
@@ -5760,7 +5775,10 @@ active; you must not call any member function during search.)";
     Object setHeuristic(Reference tp)
     {
         CHECK_BLOCKED("set_heuristic");
-        handle_c_error(clingo_control_set_heuristic(ctl, NULL, tp.toPy()));
+        static clingo_ext_heuristic_t heuristic = {
+            reinterpret_cast<decltype(clingo_ext_heuristic_t::decide)>(heuristic_decide)
+        };
+        handle_c_error(clingo_control_set_heuristic(ctl, &heuristic, tp.toPy()));
         Py_RETURN_NONE;
     }
     Object registerObserver(Reference args, Reference kwds) {
