@@ -3,9 +3,12 @@
 #script (python)
 
 class Heuristic:
-    def decide(ctl):
+    def __init__(self):
+        print(self)
+
+    def decide(self):
         print("decide called")
-        return 1
+        return True
 
 def main(prg):
     prg.set_heuristic(Heuristic())

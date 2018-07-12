@@ -3078,11 +3078,11 @@ static clingo_literal_t heuristic_decide(clingo_heuristic_control_t *ctl, PyObje
         // Object c = HeuristicControl::construct(ctl)
         Object n = PyString_FromString("decide");
         Object ret = PyObject_CallMethodObjArgs(heu, n.toPy(), nullptr);
-        return 0;
+        return 1;
     }
     catch (...) {
         handle_cxx_error("Heuristic::decide", "error during decision");
-        return 0;
+        return 2;
     }
 }
 
@@ -6335,7 +6335,7 @@ This function is thread-safe and can be called from a signal handler.  If no
 search is active the subsequent call to solve() is interrupted.  The
 SolveResult of the above solving methods can be used to query if the search was
 interrupted.)"},
-    {"set_heuristic", to_function<&ControlWrap::setHeuristic>(), METH_VARARGS,
+    {"set_heuristic", to_function<&ControlWrap::setHeuristic>(), METH_O,
 R"("set_heuristic(self) -> None")"},
     {nullptr, nullptr, 0, nullptr}
 };
