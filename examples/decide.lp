@@ -2,8 +2,8 @@
 
 class Heuristic:
     def decide(self,vsids):
-        print("deciding {}".format(-vsids))
-        return -vsids
+        print("decide")
+        return vsids
 
     def init(self, init):
         pass
