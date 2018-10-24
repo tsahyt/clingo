@@ -359,7 +359,8 @@ void NongroundProgramBuilder::block(Location const &loc, String name, IdVecUid a
     prg_.begin(loc, name, idvecs_.erase(args));
 }
 
-void NongroundProgramBuilder::external(Location const &loc, TermUid head, BdLitVecUid body) {
+void NongroundProgramBuilder::external(Location const &loc, TermUid head, BdLitVecUid body, TermUid type) {
+#   pragma message "implement me!!!"
     prg_.add(make_locatable<Statement>(loc, heads_.erase(headlit(predlit(loc, NAF::POS, head))), bodies_.erase(body), StatementType::EXTERNAL));
 }
 
